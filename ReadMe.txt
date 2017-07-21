@@ -15,4 +15,4 @@ CityName,Latitude,Longitude
 Example:
 Boulder,40.0150,-105.2705
 Note: North is represented by a positive number, South is represented by a negative number
-just as East is positive and South is Negative. 
+just as East is positive and South is Negative.
