@@ -34,7 +34,7 @@ class City_Nodes
         City_Nodes(string inFile);
         virtual ~City_Nodes();
         void addCity(string name, double Lat, double Long);
-        void findRoute(string name1, string name2);
+        void findRoute();
         //void addCity()
         //void printDetails()
         //TransmitMessage

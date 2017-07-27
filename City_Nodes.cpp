@@ -22,7 +22,6 @@ City_Nodes::City_Nodes(string fileName){//ctor
     while (getline(inFileStream,inLine)){
         string * dataArray;
         dataArray = breakLine(inLine);
-        //cout<<dataArray[0]<<dataArray[1]<<dataArray[2]<<endl;
         City newCity(dataArray[0],dataArray[1],dataArray[2]);
         cities.push_back(newCity);
     }
@@ -32,13 +31,12 @@ City_Nodes::City_Nodes(string fileName){//ctor
                 GPS_Measurements calc;
                 double distCalc = calc.CalculateDistance(cities[q].Lat, cities[q].Long, cities[z].Lat, cities[z].Long);
                 if (distCalc <= range){
-                    //cout<<"Add edge between "<<cities[q].name<<" and "<<cities[z].name<<" dist "<<distCalc<<endl;
                     addEdge(cities[q],cities[z],distCalc);
                 }
             }
         }
     }
-    Dijkstra("Seattle", "Denver");
+    //Dijkstra("Seattle", "Miami");
 }
 
 void City_Nodes::addEdge(City name1, City name2, double weight){
@@ -115,7 +113,6 @@ void City_Nodes::Dijkstra(string name1, string name2){
         double minDist = INT_MAX;
         for (int j =0; j<solved.size(); j++){
             City *current = solved[j];
-            cout<<current ->name<<endl;
             for (int k =0; k < current->adj.size(); k++){
                 double d = current->distance + current->adj[k].weight;
                 if (current->adj[k].v->solved == false){
@@ -138,8 +135,14 @@ void City_Nodes::Dijkstra(string name1, string name2){
         route.push_back(temp);
         temp = temp -> previous;
     }
-    cout<<"Route"<<endl;
+    cout<<"The shortest route is: "<<endl;
     for (int i = route.size()-1; i>=0; i--){
-        cout<<route[i]->name<<" "<<endl;
+        if (i==0){
+            cout<<route[i]->name<<endl;
+        }
+        else{
+            cout<<route[i]->name<<" ==> ";
+        }
     }
+    cout<<"The total distance flown is "<<cities[b].distance<<endl;
 }
