@@ -109,7 +109,13 @@ void City_Nodes::Dijkstra(string name1, string name2){
     solved.push_back(&cities[a]);
     City* solvedCity=nullptr;
     vector <City*> route;
+    int limitCount=0;
     while (!cities[b].solved){
+        if (limitCount >= 1000){
+            cout<<"Cities not connected"<<endl;
+            return;
+        }
+        limitCount ++;
         double minDist = INT_MAX;
         for (int j =0; j<solved.size(); j++){
             City *current = solved[j];
@@ -145,4 +151,42 @@ void City_Nodes::Dijkstra(string name1, string name2){
         }
     }
     cout<<"The total distance flown is "<<cities[b].distance<<endl;
+}
+
+void City_Nodes::TransmitMessage(){
+    cout<<"Type in starting city name:"<<endl;
+    string name1;
+    bool check = false;
+    while (1){
+        getline(cin, name1);
+        for (int x = 0; x < cities.size(); x++){
+            if (cities[x].name == name1){
+                check = true;
+            }
+        }
+        if (check){
+            break;
+        }
+        else{
+            cout<<"City not found. Please enter a valid city."<<endl;
+        }
+    }
+    cout<<"Type in destination city name:"<<endl;
+    string name2;
+    check = false;
+    while (1){
+        getline(cin, name2);
+        for (int x = 0; x < cities.size(); x++){
+            if (cities[x].name == name2){
+                check = true;
+            }
+        }
+        if (check){
+            break;
+        }
+        else{
+            cout<<"City not found. Please enter a valid city."<<endl;
+        }
+    }
+    Dijkstra(name1, name2);
 }

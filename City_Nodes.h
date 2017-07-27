@@ -34,10 +34,9 @@ class City_Nodes
         City_Nodes(string inFile);
         virtual ~City_Nodes();
         void addCity(string name, double Lat, double Long);
-        void findRoute();
+        void TransmitMessage();
         //void addCity()
         //void printDetails()
-        //TransmitMessage
     protected:
     private:
         void Dijkstra(string name1, string name2);
