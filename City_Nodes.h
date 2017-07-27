@@ -17,6 +17,7 @@ struct City{
         Long = stod(_Long);
         name = _name;
     }
+    City(){};
     double Lat;
     double Long;
     double distance;
@@ -34,13 +35,17 @@ class City_Nodes
         virtual ~City_Nodes();
         void addCity(string name, double Lat, double Long);
         void findRoute(string name1, string name2);
+        //void addCity()
+        //void printDetails()
+        //TransmitMessage
     protected:
     private:
+        void Dijkstra(string name1, string name2);
         string * breakLine(string inLine);
         vector <City> cities;
         double checkDist(string name1, string name2);
-        void addEdge(string name1, string name2, double weight);
-        double range = 500;
+        void addEdge(City name1, City name2, double weight);
+        double range = 1000;
 
 };
 
