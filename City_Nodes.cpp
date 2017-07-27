@@ -15,7 +15,6 @@ City_Nodes::City_Nodes(){//ctor
 }
 
 City_Nodes::City_Nodes(string fileName){//ctor
-    cout<<"we rank"<<endl;
     ifstream inFileStream;
     string inLine;
     inFileStream.open(fileName);
@@ -25,12 +24,18 @@ City_Nodes::City_Nodes(string fileName){//ctor
         dataArray = breakLine(inLine);
         cout<<dataArray[0]<<dataArray[1]<<dataArray[2]<<endl;
         City newCity(dataArray[0],dataArray[1],dataArray[2]);
-        cout<<"This too"<<endl;
         cities.push_back(newCity);
     }
-    for (int q; q< cities.size();q++){
-        cout<<cities[q].name<<endl;
-        cout<<
+    for (int q=0; q< cities.size();q++){
+        for (int z= 0; z<cities.size(); z++){
+            if (z!=q){
+                GPS_Measurements calc;
+                double distCalc = calc.CalculateDistance(cities[q].Lat, cities[q].Long, cities[z].Lat, cities[z].Long);
+                if (distCalc <= range){
+                    cout<<"Add edge between "<<cities[q].name<<" and "<<cities[z].name<<endl;
+                }
+            }
+        }
     }
 }
 

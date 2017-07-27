@@ -40,6 +40,7 @@ class City_Nodes
         vector <City> cities;
         double checkDist(string name1, string name2);
         void addEdge(string name1, string name2, double weight);
+        double range = 500;
 
 };
 
