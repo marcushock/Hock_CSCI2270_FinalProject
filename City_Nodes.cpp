@@ -15,13 +15,22 @@ City_Nodes::City_Nodes(){//ctor
 }
 
 City_Nodes::City_Nodes(string fileName){//ctor
+    cout<<"we rank"<<endl;
     ifstream inFileStream;
     string inLine;
     inFileStream.open(fileName);
     if (!inFileStream){cout<<"Could not read file.\n";}
     while (getline(inFileStream,inLine)){
         string * dataArray;
-        cities.push_back(City(dataArray[0],dataArray[1],dataArray[2]));
+        dataArray = breakLine(inLine);
+        cout<<dataArray[0]<<dataArray[1]<<dataArray[2]<<endl;
+        City newCity(dataArray[0],dataArray[1],dataArray[2]);
+        cout<<"This too"<<endl;
+        cities.push_back(newCity);
+    }
+    for (int q; q< cities.size();q++){
+        cout<<cities[q].name<<endl;
+        cout<<
     }
 }
 
