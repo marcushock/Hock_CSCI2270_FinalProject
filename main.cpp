@@ -5,13 +5,16 @@
 
 using namespace std;
 
+
+
 string menu(){
 	cout<<"■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■"<<endl;
 	cout<<"Please select from one of the choice below:"<<endl;
 	cout<<"1. Transmit Message"<<endl;
 	cout<<"2. Add new city"<<endl;
-	cout<<"3. Help"<<endl;
-	cout<<"4. Quit"<<endl;
+	cout<<"3. List cities"<<endl;
+	cout<<"4. Help"<<endl;
+	cout<<"5. Quit"<<endl;
 
 	string choice;
 	getline(cin,choice);
@@ -42,16 +45,22 @@ string loadMenu(){
 }
 
 int main(){
-	City_Nodes runClass(loadMenu());
+
+	//City_Nodes runClass(loadMenu()); MARCUS UNCOMMENT THIS
+	City_Nodes runClass("cities.txt");
 	while (1){
 		string choice = menu();
 		if (choice == "1"){
 			cout<<"Prepare to send a message"<<endl;
+			runClass.TransmitMessage();
 		}
 		else if (choice == "2"){
 			cout<<"Prepare to add a city"<<endl;
+
+
+
 		}
-		else if (choice == "4"){
+		else if (choice == "5"){
 			cout<<"Shutting down."<<endl;
 			return 0;
 		}
