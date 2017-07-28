@@ -28,7 +28,7 @@ The city coordinate file is called 'cities.txt'. Enter this when loading the pro
 Dependencies:
 This code does not require any third party libraries. It does require the following standard
 libraries though:
-iostream, string, sstream, cmath, and vector
+iostream, string, sstream, cmath, fstream, climits and vector
 
 System Requirements:
 This program has been tested on Linux. It should run on Mac and Windows, but has not been tested.
@@ -41,4 +41,4 @@ if a non-numeric value is entered for the latitude or longitude, the program wil
 
 Note:
 The project requirements state that there needs to be at least one class and seven public
-methods. This project has three classes and over 7 public methods in total. 
+methods. This project has three classes and over 7 public methods in total.
