@@ -16,3 +16,8 @@ Example:
 Boulder,40.0150,-105.2705
 Note: North is represented by a positive number, South is represented by a negative number
 just as East is positive and South is Negative.
+
+To compile, please enter the following command:
+g++ -std=c++11 main.cpp GPS_Measurements.cpp City_Nodes.cpp Message_Queues.cpp -o Hock.o
+Then to run the file please enter the following command:
+./Hock.o
