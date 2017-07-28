@@ -6,7 +6,7 @@
 using namespace std;
 
 
-
+//Main menu to be repeatedly displayed.
 string menu(){
 	cout<<"■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■"<<endl;
 	cout<<"Please select from one of the choice below:"<<endl;
@@ -15,12 +15,12 @@ string menu(){
 	cout<<"3. List cities"<<endl;
 	cout<<"4. Help"<<endl;
 	cout<<"5. Quit"<<endl;
-
 	string choice;
 	getline(cin,choice);
 	return choice;
 }
 
+//Loading menu when first starting the program.
 string loadMenu(){
 	cout<<"Loading program..."<<endl;
 	cout<<"Please enter the name of the coordinate file."<<endl;
@@ -30,7 +30,7 @@ string loadMenu(){
 		ifstream inFileStream;
 		string inLine;
 		inFileStream.open(fileName);
-		if (!inFileStream){cout<<"Could not read file.\nPlease enter the name correctly:\n(Maybe try 'cities.txt')\n";}
+		if (!inFileStream){cout<<"Could not read file.\nPlease enter the name correctly:\n(Maybe try entering 'cities.txt')\n";}
 		else{break;}
 	}
 	cout<<"Successfully loaded program\n"<<endl;
@@ -61,9 +61,9 @@ void helpInfo(){
 	cout<<"Email: marcus.hock@colorado.edu"<<endl;
 }
 
+//Simple loop to run all other functions from. 
 int main(){
-	//City_Nodes runClass(loadMenu()); //MARCUS UNCOMMENT THIS
-	City_Nodes runClass("cities.txt");
+	City_Nodes runClass(loadMenu());
 	while (1){
 		string choice = menu();
 		if (choice == "1"){

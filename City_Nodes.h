@@ -4,7 +4,7 @@
 #include <vector>
 
 using namespace std;
-
+//Skelton for the city struct and graph/city network graph
 struct City;
 struct adjVector{
     City * v;
@@ -42,7 +42,6 @@ class City_Nodes
         bool sent = false;
         string * breakLine(string inLine);
         vector <City> cities;
-        //double checkDist(string name1, string name2);
         void addEdge(City name1, City name2, double weight);
         double range = 1000;
 

@@ -11,7 +11,7 @@ GPS_Measurements::~GPS_Measurements()
 {
     //dtor
 }
-
+//This function uses the Haversine function to find the distnace along a great circle path. 
 double GPS_Measurements::CalculateDistance(double Lat1, double Long1, double Lat2, double Long2)
 {
     double rLat1 = Lat1/180.0*pi;

@@ -10,7 +10,7 @@ struct Node{
     Node * next;
     string word;
 };
-
+//Skeleton for how messages are stored and then displayed and deleted. 
 class Message_Queues{
 private:
     Node * start;

@@ -11,7 +11,7 @@ class GPS_Measurements
     protected:
     private:
         double pi = 3.14159265358979323846;
-        double r = 3959;
+        double r = 3959; //Radius of the earth
 };
 
 #endif // GPS_MEASUREMENTS_H

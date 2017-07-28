@@ -37,7 +37,6 @@ City_Nodes::City_Nodes(string fileName){//ctor
             }
         }
     }
-    //Dijkstra("Seattle", "Miami");
 }
 
 void City_Nodes::addEdge(City name1, City name2, double weight){
