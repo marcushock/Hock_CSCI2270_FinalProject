@@ -44,6 +44,23 @@ string loadMenu(){
 	return fileName;
 }
 
+void helpInfo(){
+	cout<<"This program is to find a path to send a messenger bird that can fly 1,000 miles"<<endl;
+	cout<<"before needing to rest in another city on the way to the destination."<<endl;
+	cout<<"Dijkstra's algorithm is used to find the shortest distance."<<endl;
+	cout<<"If the bird cannot make the journey, it will die and the message will be lost."<<endl;
+	cout<<"The bird carries the message in a digital collar that displays one word at a "<<endl;
+	cout<<"time. Therefore the message prints out one word at a time and is stored in "<<endl;
+	cout<<"collar that deletes the message once displayed. "<<endl;
+	cout<<"\nIf at any point you need to force close the program press 'Ctrl + C'"<<endl;
+	cout<<"This program has input validation, however if you enter something non numeric "<<endl;
+	cout<<"the program WILL crash."<<endl;
+	cout<<"Also, capitalization and spacing does matter when entering city names, so "<<endl;
+	cout<<"be careful when inputting."<<endl;
+	cout<<"\nFor any technical support please contact Marcus Hock"<<endl;
+	cout<<"Email: marcus.hock@colorado.edu"<<endl;
+}
+
 int main(){
 	//City_Nodes runClass(loadMenu()); //MARCUS UNCOMMENT THIS
 	City_Nodes runClass("cities.txt");
@@ -57,7 +74,12 @@ int main(){
 			cout<<"Prepare to add a city"<<endl;
 			runClass.addCity();
 
-
+		}
+		else if (choice == "3"){
+			runClass.printCities();
+		}
+		else if (choice =="4"){
+			helpInfo();
 		}
 		else if (choice == "5"){
 			cout<<"Shutting down."<<endl;
