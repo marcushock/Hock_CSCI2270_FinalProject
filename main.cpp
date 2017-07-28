@@ -8,7 +8,7 @@ using namespace std;
 
 
 string menu(){
-	cout<<"■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■"<<endl;
+	cout<<"■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■"<<endl;
 	cout<<"Please select from one of the choice below:"<<endl;
 	cout<<"1. Transmit Message"<<endl;
 	cout<<"2. Add new city"<<endl;
@@ -34,7 +34,7 @@ string loadMenu(){
 		else{break;}
 	}
 	cout<<"Successfully loaded program\n"<<endl;
-	cout<<"■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■"<<endl;
+	cout<<"■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■"<<endl;
 	cout<<"Welcome to the messenger bird finding path program"<<endl;
 	cout<<"In this post apocalyptic world, the best way to "<<endl;
 	cout<<"communicate with other cities is through long range"<<endl;
@@ -45,18 +45,17 @@ string loadMenu(){
 }
 
 int main(){
-
-	//City_Nodes runClass(loadMenu()); MARCUS UNCOMMENT THIS
+	//City_Nodes runClass(loadMenu()); //MARCUS UNCOMMENT THIS
 	City_Nodes runClass("cities.txt");
 	while (1){
 		string choice = menu();
 		if (choice == "1"){
-			cout<<"Prepare to send a message"<<endl;
+			cout<<"■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■"<<endl;
 			runClass.TransmitMessage();
 		}
 		else if (choice == "2"){
 			cout<<"Prepare to add a city"<<endl;
-
+			runClass.addCity();
 
 
 		}
