@@ -279,3 +279,11 @@ void City_Nodes::addCity(){
         }
     }
 }
+
+
+void City_Nodes::printCities(){
+    for (int x=0; x < cities.size(); x++){
+        cout<<cities[x].name<<" is at "<<cities[x].Lat<<", "<<cities[x].Long<<endl;
+    }
+    cout<<endl;
+};

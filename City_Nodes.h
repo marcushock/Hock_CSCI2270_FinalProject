@@ -35,7 +35,7 @@ class City_Nodes
         virtual ~City_Nodes();
         void TransmitMessage();
         void addCity();
-        //void printDetails()
+        void printCities();
     protected:
     private:
         void Dijkstra(string name1, string name2);
