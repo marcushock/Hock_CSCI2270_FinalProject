@@ -1,3 +1,4 @@
+#include "Message_Queues.h"
 #include "City_Nodes.h"
 #include <iostream>
 #include <string>
@@ -68,15 +69,14 @@ string * City_Nodes::breakLine(string inLine){
 };
 
 
+
+
 City_Nodes::~City_Nodes(){//dtor
 }
 
-void City_Nodes::addCity(string name, double Lat, double Long){
-    return;
-};
-
 
 void City_Nodes::Dijkstra(string name1, string name2){
+    sent = false;
     if (name1==name2){
         cout<<"Same starting city. Message Terminated."<<endl;
         return;
@@ -110,9 +110,13 @@ void City_Nodes::Dijkstra(string name1, string name2){
     City* solvedCity=nullptr;
     vector <City*> route;
     int limitCount=0;
+    if (cities[a].adj.size() == 0 || cities[b].adj.size() == 0){
+        cout<<"Cities not connected. Messenger bird died."<<endl;
+        return;
+    }
     while (!cities[b].solved){
         if (limitCount >= 1000){
-            cout<<"Cities not connected"<<endl;
+            cout<<"Cities not connected. Messenger bird died."<<endl;
             return;
         }
         limitCount ++;
@@ -150,7 +154,8 @@ void City_Nodes::Dijkstra(string name1, string name2){
             cout<<route[i]->name<<" ==> ";
         }
     }
-    cout<<"The total distance flown is "<<cities[b].distance<<endl;
+    cout<<"The total distance flown is "<<cities[b].distance<<" miles."<<endl;
+    sent = true;
 }
 
 void City_Nodes::TransmitMessage(){
@@ -171,7 +176,7 @@ void City_Nodes::TransmitMessage(){
             cout<<"City not found. Please enter a valid city."<<endl;
         }
     }
-    cout<<"Type in destination city name:"<<endl;
+    cout<<"\nType in destination city name:"<<endl;
     string name2;
     check = false;
     while (1){
@@ -188,5 +193,89 @@ void City_Nodes::TransmitMessage(){
             cout<<"City not found. Please enter a valid city."<<endl;
         }
     }
+    string inMessage;
+    cout<<"\nPlease enter a message to encrypt and send:"<<endl;
+
+    while (1){
+        getline(cin, inMessage);
+        if (inMessage != ""){
+            break;
+        }
+        cout<<"Please enter a valid character or message"<<endl;
+    }
+    Message_Queues message;
+    message.QueueSentence(inMessage);
+    cout<<"\nPress the enter key to send message (bird)."<<endl;
+    cin.get();
     Dijkstra(name1, name2);
+    if (sent){
+        cout<<"\nMessage received."<<endl;
+        cout<<"Press the enter key to open the message"<<endl;
+        cin.get();
+        message.printQueue();
+
+    }
+    cout<<endl;
+    cout<<"Press enter to return to the main menu"<<endl;
+    cin.get();
+    cout<<endl;
+}
+
+void City_Nodes::addCity(){
+    cout<<"\nPlease enter a city name:"<<endl;
+    string name;
+    while (1){
+        getline(cin, name);
+        bool flag = true;
+        if (name =="q"){
+            cout<<"Cancelling...\n"<<endl;
+
+            return;
+        }
+        for (int x = 0; x<cities.size(); x++){
+            if (cities[x].name==name){
+                flag = false;
+            }
+        }
+        if (name != "" && flag){
+            break;
+        }
+        cout<<"Please enter a valid city name that has not been used before and is at least \none character."<<endl;
+        cout<<"Or if you would like to cancel, enter 'q'"<<endl;
+    }
+    string sLat;
+    double Lat;
+    cout<<"\nPlease enter the lattitude coordinate. South should be negative"<<endl;
+    while (1){
+        getline(cin, sLat);
+        bool flag = true;
+        Lat = stod(sLat);
+        if (name != "" && Lat<=90.0 && Lat >=-90.0){
+            break;
+        }
+        cout<<"Please enter a valid lattitude value"<<endl;
+    }
+    string sLong;
+    double Long;
+    cout<<"\nPlease enter the longitude coordinate. West should be negative"<<endl;
+    while (1){
+        getline(cin, sLong);
+        bool flag = true;
+        Long = stod(sLong);
+        if (name != "" && Long<=190.0 && Long >=-180.0){
+            break;
+        }
+        cout<<"Please enter a valid longitude value"<<endl;
+    }
+    City newCity(name, sLat, sLong);
+    cities.push_back(newCity);
+    cout<<newCity.name<<endl;
+    for (int x = 0; x< cities.size()-1;x++){
+        GPS_Measurements calc;
+        double distance = calc.CalculateDistance(Lat, Long, cities[x].Lat, cities[x].Long);
+        if (distance <= range){
+            addEdge(cities[cities.size()-1], cities[x], distance);
+            addEdge(cities[x], cities[cities.size()-1], distance);
+        }
+    }
 }
