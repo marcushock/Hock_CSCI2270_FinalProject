@@ -61,7 +61,7 @@ void helpInfo(){
 	cout<<"Email: marcus.hock@colorado.edu"<<endl;
 }
 
-//Simple loop to run all other functions from. 
+//Simple loop to run all other functions from.
 int main(){
 	City_Nodes runClass(loadMenu());
 	while (1){
@@ -79,6 +79,7 @@ int main(){
 			runClass.printCities();
 		}
 		else if (choice =="4"){
+			cout<<"■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■"<<endl;
 			helpInfo();
 		}
 		else if (choice == "5"){
