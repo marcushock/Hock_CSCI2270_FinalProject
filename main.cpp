@@ -54,7 +54,7 @@ void helpInfo(){
 	cout<<"collar that deletes the message once displayed. "<<endl;
 	cout<<"\nIf at any point you need to force close the program press 'Ctrl + C'"<<endl;
 	cout<<"This program has input validation, however if you enter something non numeric "<<endl;
-	cout<<"the program WILL crash."<<endl;
+	cout<<"for a lattitude or longitude when entering a new city, the program WILL crash."<<endl;
 	cout<<"Also, capitalization and spacing does matter when entering city names, so "<<endl;
 	cout<<"be careful when inputting."<<endl;
 	cout<<"\nFor any technical support please contact Marcus Hock"<<endl;
